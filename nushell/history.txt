@@ -1,0 +1,268 @@
+carapace
+zoxide .config
+zoxide -h
+zoxide query .config
+zoxide query .config | cd
+pwd
+zoxide query .config | cd
+zoxide query .config | <\n>
+zoxide query .config | cd $1
+zoxide query .config | cd $
+cd C:\Users\Abdul\.config\
+clear
+lsd
+ls
+cd ..\
+lsd
+ls
+ls | name == ".cache"
+ls | ls.name
+ls | json
+ls | to json
+ls | to json | name == ".cache"
+ls | to json | name
+ls
+pwd .cache\
+ls .cache\
+clear
+pwd
+cd .config\
+cd nushell\
+clear
+nvim env.nu
+exit
+clear
+cd .config\nushell\
+nvim env.nu
+nvim
+exit
+$nu.config-path
+z .config
+cd .config\nushell
+lsd
+zoxide init nushell | save -f ~/.zoxide.nu
+ls
+zoxide init nushell | save -f ~/.config/nushell/.zoxide.nu
+ls
+exit
+clear
+l
+z .config
+clear
+ls
+cd 
+cd .config\nushell
+clear
+z .config
+zi
+pwd
+clear
+lsd
+git status
+clear
+ls
+z powershell bin
+cd ../
+lsd
+cd etc\
+lsd
+cd starship\
+lsd
+bat starship.toml
+clear
+pwd
+bat --raw starship.toml 
+cat starship.toml 
+get starship.toml
+open --raw starship.toml
+open --raw starship.toml | save -f ~/.config/starship.toml
+z .config
+ls
+cd nushell\
+nvim
+exit
+pwd
+open starship.toml
+starship init nushell
+starship init nu
+clear
+lsd
+pwd
+z .config
+clear
+lsd
+ls | table
+lsd | table
+lsd -h
+lsd --help
+lsd -t
+lsd -1t
+lsd -1tl
+lsd -1tl | table
+lsd -1tlr | table
+lsd -1tlR | table
+lsd -1tl | table
+lsd -1t --size --date | table
+lsd -1t --size default --date | table
+lsd -1t --size=default --date | table
+lsd -1t --size="default" --date | table
+lsd --size | table
+lsd --size short | table
+lsd --size default | table
+lsd -1t --size default | table
+lsd -1tl --size default | table
+lsd -1tl --size bytes | table
+lsd -1tl --size bytes --permission disable | table
+lsd -1tl --size bytes --permission attributes | table
+lsd -1tl --size bytes --permission | table
+lsd -1tl --size | table
+lsd -1tl | table
+ls
+ls --cons
+ls --icons
+ls --help
+clear
+exit
+cd nushell\
+nvim
+cd ../../.cache/
+lsd
+cd starship\
+lsd
+nvim starship.toml
+cd nushell\
+rm init.nu\
+lsd
+clear
+exit
+clear
+ls
+clear
+ls
+clear
+ls
+cd
+clear
+z sculpmatic
+z projects blender
+clear
+cd scripts\
+cd addons\
+cd Sculptmatic\
+clear
+za .
+zoxide add .
+clear
+nvim
+clear
+exit
+clear
+z sculptmatic
+clear
+lsd
+clear
+lsd
+clear
+lsd
+clear
+lsd
+clear
+ps
+ps | where name == "nvim"
+ps | where name == "nvim.exe"
+ps | where name cpu > 1
+ps | where cpu > 1
+ps | where mem > 300
+ps | where mem > 300.0
+ps | where mem
+ps | where name == "neovide.exe"
+os
+keymapper
+keymapper 
+exit
+clear
+$env.os
+$env.path
+$env.os
+z config
+clear
+cd nushell\
+mkdir scripts
+lsd
+rm scripts\
+mkdir scripts
+z powershell
+ls
+exit
+clear
+exit
+nu
+exit
+nu
+clear
+exit
+nu
+exit
+nu
+exit
+clear
+exit
+nu
+exit
+clear
+exit
+nu
+$env.os
+exit
+nu
+clear
+$env.os
+exit
+nu
+$env.os
+exit
+clear
+claer
+clear
+$env.APPDATA
+$env.os
+exit
+nu --lsp
+exit
+lsd | table -e
+table -h
+lsd | lines
+lsd | line
+lines =h
+line -h
+lines -h
+lsd
+lsd | split
+lsd | split 
+lsd | split words
+lsd
+lsd | split cell-path 
+lsd | split row
+lsd | split chars 
+clear
+lsd
+ls
+ls | where name == ".svg"
+ls | where name == "*.svg"
+ls | where name == "/*.svg/"
+clear
+z config
+clear
+gstat
+input
+input list [1,2,3]
+input list | [1,2,3]
+[1,2,3,4] | input list
+plugin
+clear
+git clone git@github.com:A-Lamia/dotfiles.git
+yazi
+open .
+explorer .
+git status
+gti add keymapper.conf nushell\ starship.toml

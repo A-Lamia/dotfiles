@@ -1,0 +1,155 @@
+#:schema = 'https://starship.rs/config-schema.json'
+# ${custom.bgl}\
+
+format = """
+$fill\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$node\
+$rust\
+$lua\
+$python\
+$c\
+$cmake\
+$golang\
+$ocaml\
+$odin\
+\n$sudo$character$cmd_duration"""
+
+# scan_timeout = 10
+scan_timeout = 500
+add_newline = false
+
+palette = 'default'
+
+[palettes.default]
+bg = "black"
+fg = "white"
+
+lang_white = '#eeeeee'
+lang_black = '#111111'
+
+node = '#84B758'
+rust = '#E43A25'
+lua = '#1A69C3'
+python = '#FBD542'
+c = '#05589A'
+cmake = '#05589A'
+golang = '#76E0FC'
+ocaml = '#F18C02'
+odin = '#13487F'
+
+[fill]
+symbol = ' '
+
+[character]
+success_symbol = "[](bg:none fg:bg)[❯](bg:black fg:bold red)[](bg:none fg:bg)"
+error_symbol = "[](bg:none fg:bg)[󱄳](bg:black fg:bold red)[](bg:none fg:bg)"
+
+[cmd_duration]
+style = "fg:purple bg:black"
+format = "[](bg:none fg:bg)[$duration]($style)[](bg:none fg:bg) "
+
+[sudo]
+style = "fg:yellow"
+symbol = "󱐋"
+format = "[$symbol]($style) "
+allow_windows = false
+
+##########
+# RIGHT
+#########
+
+[directory]
+style = "fg:bold green bg:black"
+format = "[](bg:none fg:bg)[ $path]($style)[](bg:none fg:bg) "
+truncation_length = 3
+
+[git_branch]
+symbol = "  "
+style = "fg:bold black bg:yellow"
+format = "[](bg:none fg:yellow)[$symbol$branch(:$remote_branch) ]($style)"
+
+
+[git_state]
+style = "fg:black bg:yellow"
+format = '≡ [$state( $progress_current/$progress_total)]($style)'
+
+[git_status]
+style = "fg:black bg:yellow"
+format = '[≡ $all_status$ahead_behind]($style)'
+conflicted = "󰞇 "
+ahead = " "
+behind = " "
+diverged = " "
+up_to_date = ""
+untracked = "󰡫 "
+stashed = "󰏗 "
+modified = " "
+staged = " "
+renamed = "󰷾 "
+deleted = "󰆴"
+
+[git_metrics]
+added_style = "fg:bold green bg:black"
+deleted_style = "fg:bold red bg:black"
+format = '[](bg:yellow fg:bg)([+$added ]($added_style))([-$deleted]($deleted_style)[](bg:none fg:bg))'
+only_nonzero_diffs = false
+disabled = false
+
+[nodejs]
+symbol = "󰎙 "
+style = "bg:node fg:bold lang_black"
+format = ' [](bg:none fg:node)[ $symbol ($version) ]($style)[](bg:none fg:node)'
+
+[rust]
+symbol = " "
+style = "bg:rust fg:bold lang_white"
+format = ' [](bg:none fg:rust)[ $symbol ($version) ]($style)[](bg:none fg:rust)'
+
+[lua]
+symbol = " "
+style = "bg:lua fg:bold lang_white"
+format = ' [](bg:none fg:lua)[ $symbol ($version) ]($style)[](bg:none fg:lua)'
+
+[python]
+symbol = " "
+style = "bg:python fg:bold lang_black"
+format = ' [](bg:none fg:python)[ $symbol ($version) ]($style)[](bg:none fg:python)'
+
+[c]
+symbol = " "
+style = "bg:C fg:bold lang_white"
+format = ' [](bg:none fg:c)[ $symbol ($version) ]($style)[](bg:none fg:c)'
+
+[cmake]
+symbol = " "
+style = "bg:cmake fg:bold lang_white"
+format = ' [](bg:none fg:cmake)[ $symbol ($version) ]($style)[](bg:none fg:cmake)'
+
+[golang]
+symbol = ""
+style = "bg:golang fg:bold lang_black"
+format = ' [](bg:none fg:golang)[ $symbol ($version) ]($style)[](bg:none fg:golang)'
+
+[ocaml]
+symbol = " "
+style = "bg:ocaml fg:bold lang_black"
+format = ' [](bg:none fg:ocaml)[ $symbol ($version) ]($style)[](bg:none fg:ocaml)'
+
+[odin]
+symbol = " "
+style = "bg:odin fg:bold lang_white"
+format = ' [](bg:none fg:odin)[ $symbol ($version) ]($style)[](bg:none fg:odin)'
+
+[custom.bgl]
+command = "[math]::Round(((curl https://cgm.lamia.io/api/v1/entries.json -s | jq '.[0].sgv') / 18), 1)"
+shell = ["pwsh.exe", "-NoProfile", "-Command", "-"]
+symbol =  "󰖌"
+style = "fg:bold red bg:black"
+format = "[](bg:none fg:bg)[$symbol $output]($style)[](bg:none fg:bg) "
+when = true
+ignore_timeout = true
