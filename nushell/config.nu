@@ -1,7 +1,6 @@
-# Imports
 source ~/.cache/starship/init.nu
 source ~/.cache/carapace/init.nu
-source ~/.config/nushell/.zoxide.nu
+source ~/.cache/zoxide/init.nu
 
 source ~/.config/nushell/function.nu
 
