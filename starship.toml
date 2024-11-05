@@ -1,23 +1,15 @@
-#:schema = 'https://starship.rs/config-schema.json'
-# ${custom.bgl}\
+# :schema = 'https://starship.rs/config-schema.json'
 
-format = """
-$fill\
+format = """$sudo$character$cmd_duration"""
+
+right_format = """
 $directory\
 $git_branch\
 $git_state\
 $git_status\
 $git_metrics\
-$node\
-$rust\
-$lua\
-$python\
-$c\
-$cmake\
-$golang\
-$ocaml\
-$odin\
-\n$sudo$character$cmd_duration"""
+$all
+"""
 
 # scan_timeout = 10
 scan_timeout = 500
