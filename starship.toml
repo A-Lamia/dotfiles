@@ -146,10 +146,10 @@ style = "bg:odin fg:bold lang_white"
 format = ' [](bg:none fg:odin)[ $symbol ($version) ]($style)[](bg:none fg:odin)'
 
 [custom.bgl]
-command = "[math]::Round(((curl https://cgm.lamia.io/api/v1/entries.json -s | jq '.[0].sgv') / 18), 1)"
-shell = ["pwsh.exe", "-NoProfile", "-Command", "-"]
+command = "(curl https://cgm.lamia.io/api/v1/entries.json -s | from json | get sgv.0) / 18 | math round -p 1"
+shell = ["nu.exe", "-n", "-c" ]
 symbol =  "󰖌"
 style = "fg:bold red bg:black"
 format = "[](bg:none fg:bg)[$symbol $output]($style)[](bg:none fg:bg) "
-when = true
+when = false # set to true to enable
 ignore_timeout = true
