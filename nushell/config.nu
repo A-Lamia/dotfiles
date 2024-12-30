@@ -10,5 +10,7 @@ $env.TRANSIENT_PROMPT_COMMAND_RIGHT = ""
 # Alias
 alias l = ls
 
+
+alias shrink = nu ~/.config/nushell/scripts/shrink.nu
 alias eol = nu ~/.config/nushell/scripts/eol.nu
 
