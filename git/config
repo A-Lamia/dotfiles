@@ -1,0 +1,47 @@
+[core]
+	eol = lf
+	autocrlf = input
+	longpaths = true
+	pager = delta
+
+[alias]
+	st = "status"
+	ci = "commit"
+	co = "checkout"
+	br = "branch"
+	re = "rebase --autostash"
+
+	last = "log -1 HEAD"
+	unstage = "restore --staged"
+	rebase = "rebase --autostash"
+	move = "rebase -i --strategy=recursive --strategy-option=ours"
+	save = "commit -a -u -m"
+	cin = "commit --interactive"
+
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg2
+
+[diff]
+	tool = delta
+
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+
+[interactive]
+	diffFilter = delta --color-only
+
+[sequence]
+	editor = girt #git-interactive-rebase-tool
+
