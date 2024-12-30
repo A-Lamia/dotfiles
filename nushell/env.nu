@@ -8,7 +8,7 @@ if ($starship | path exists) == false and (which starship | is-empty) {
 # Carapace
 $env.CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense"
 const carapace = ("~/.cache/carapace/init.nu" | path expand)
-if ($carapace | path exists) == false and (which carapace | is-not-empty) {
+if ($carapace | path exists) == false and (which carapace | is-empty) {
   mkdir ($carapace | path dirname)
   carapace _carapace nushell | save --force $carapace
 } 
