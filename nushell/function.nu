@@ -1,12 +1,21 @@
-def --wrapped n [path:string = "", ...opts] {
-  if (which neovide | is-not-empty) {
-    if $env.os == "Windows_NT" {
-      alias Start-Process = pwsh -nop -c Start-Process
-      Start-Process neovide ...$opts $path
-    }
-  } else { 
-    print "neovide not found"
-  }
+def --wrapped pstart [$exe, ...param] {
+	pwsh -nop -c  ('Start-Process' 
+		| append $exe 
+		| append ($param 
+			| enumerate 
+			| each {|c| $"'($c.item)',"}) 
+		| str join " "
+	  | str trim --right --char "," ) 
+}
+
+
+def --wrapped n [...opts] {
+  if (which neovide | is-empty) { return "Neovide was not found" }
+
+	match $env.os { 
+		"Windows_NT" => {pstart neovide ...$opts}, 
+		_ => "OS not found" }
+  
 }
 
 
