@@ -39,7 +39,8 @@ odin = '#13487F'
 symbol = ' '
 
 [character]
-success_symbol = "[](bg:none fg:bg)[❯](bg:black fg:bold red)[](bg:none fg:bg)"
+# success_symbol = "[](bg:none fg:bg)[❯](bg:black fg:bold red)[](bg:none fg:bg)"
+success_symbol = ""
 error_symbol = "[](bg:none fg:bg)[󱄳](bg:black fg:bold red)[](bg:none fg:bg)"
 
 [cmd_duration]
