@@ -5,6 +5,7 @@ format = """$sudo$character$cmd_duration"""
 right_format = """
 $directory\
 $git_branch\
+$git_commit\
 $git_state\
 $git_status\
 $git_metrics\
@@ -65,6 +66,9 @@ symbol = "  "
 style = "fg:bold black bg:yellow"
 format = "[](bg:none fg:yellow)[$symbol$branch(:$remote_branch) ]($style)"
 
+[git_commit]
+style = "fg:bold black bg:yellow"
+format = '[($hash$tag )]($style)'
 
 [git_state]
 style = "fg:black bg:yellow"
