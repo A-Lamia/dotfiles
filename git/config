@@ -11,12 +11,13 @@
 	br = "branch"
 	re = "rebase --autostash"
 
+	cin = "commit --interactive"
+	cia = "commit -a -u"
+
 	last = "log -1 HEAD"
 	unstage = "restore --staged"
 	rebase = "rebase --autostash"
 	move = "rebase -i --strategy=recursive --strategy-option=ours"
-	save = "commit -a -u -m"
-	cin = "commit --interactive"
 
 
 [filter "lfs"]
