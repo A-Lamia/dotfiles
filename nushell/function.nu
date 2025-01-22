@@ -1,21 +1,34 @@
 def --wrapped pstart [$exe, ...param] {
-	pwsh -nop -c  ('Start-Process' 
-		| append $exe 
-		| append ($param 
-			| enumerate 
-			| each {|c| $"'($c.item)',"}) 
-		| str join " "
-	  | str trim --right --char "," ) 
+	match $nu.os-info.name { 
+		"Windows_NT" => {
+			pwsh -nop -c  ('Start-Process' 
+				| append $exe 
+				| append ($param 
+				| enumerate 
+				| each {|c| $"'($c.item)',"}) 
+				| str join " "
+	  		| str trim --right --char "," ) 
+		}, 
+		"linux" => {
+			sh -c ($exe
+				| append $param
+				| append "&"
+				| str join " ")
+		},
+		_ => "OS not found" }
+}
+
+def --wrapped shstart [$exe, ...param] {
+	sh -c ($exe
+		| append $param
+		| append "&"
+		| str join)
 }
 
 
 def --wrapped n [...opts] {
   if (which neovide | is-empty) { return "Neovide was not found" }
-
-	match $env.os { 
-		"Windows_NT" => {pstart neovide ...$opts}, 
-		_ => "OS not found" }
-  
+	pstart neovide ...$opts
 }
 
 
