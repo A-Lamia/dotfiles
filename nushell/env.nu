@@ -19,3 +19,12 @@ if ($zoxide | path exists) == false and (which zoxide | is-not-empty) {
   mkdir ($zoxide | path dirname)
   zoxide init nushell | save --force $zoxide
 } 
+
+# Mise 
+const mise = ("~/.cache/mise/init.nu" | path expand)
+if ($mise | path exists ) == false and (which mise | is-not-empty) {
+  mkdir ($mise | path dirname)
+  mise activate nu | save --force $mise
+} 
+
+$env.EDITOR = "nvim"

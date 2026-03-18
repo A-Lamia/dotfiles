@@ -1,6 +1,7 @@
 source $starship
 source $carapace
 source $zoxide
+source $mise
 
 source ~/.config/nushell/function.nu
 
