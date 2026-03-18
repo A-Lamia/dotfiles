@@ -18,6 +18,8 @@
 	unstage = "restore --staged"
 	rebase = "rebase --autostash"
 	move = "rebase -i --strategy=recursive --strategy-option=ours"
+	push-up = "push origin --set-upstream"
+	push-del = "push origin --delete"
 
 
 [filter "lfs"]
