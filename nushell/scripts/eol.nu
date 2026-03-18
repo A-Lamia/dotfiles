@@ -38,7 +38,7 @@ def "main lf" [path: string, --global, -g] {
 	return $files
 }
 
-def main [] -> table {
+def main [] {
 	print ([
 		("Converts file line endings to crlf or lf.\n")
 		("\n")
