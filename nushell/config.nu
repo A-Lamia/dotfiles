@@ -3,21 +3,27 @@ source $carapace
 source $zoxide
 source $mise
 
+const profile = (if $nu.os-info.name == "linux" {("~/.config/nushell/linux.nu" | path expand)} else {("~/.config/nushell/windows.nu" | path expand)})
+source $profile
 source ~/.config/nushell/function.nu
 
 def bubble [prompt: string, color: string] {
 	([
-    (ansi reset)                           
+    (ansi reset)
     (ansi { fg: "black"})
     (char -u e0b6)
     (ansi { fg: $color, bg: "black"})
     ($prompt)
-    (ansi reset)                           
+    (ansi reset)
     (ansi { fg: "black"})
-    (char -u e0b4)                         
-    (ansi reset)                           
-  ] | str join )
+    (char -u e0b4)
+    (ansi reset)
+  ] | str join)
 }
+
+############
+## SETTINGS
+###########
 
 $env.config.show_banner = false
 
@@ -29,10 +35,13 @@ $env.TRANSIENT_PROMPT_COMMAND = " " + (bubble " "  red) + " "
 $env.TRANSIENT_PROMPT_INDICATOR_VI_INSERT = ""
 $env.TRANSIENT_PROMPT_INDICATOR_VI_NORMAL = ""
 $env.TRANSIENT_PROMPT_COMMAND_RIGHT = ""
+$env.PID = ($nu | get pid)
 
-# Alias
-alias l = ls
+##########
+## ALIAS
+#########
 
+## Git
 alias ggh = git rev-parse --abbrev-ref HEAD
 alias geol = git ls-files --eol
 alias gsl = do {|branch| git rebase --autostash --exec 'git commit --amend --no-edit --gpg-sign' ($branch) HEAD}
@@ -45,7 +54,16 @@ alias jjo = jj --no-pager --ignore-working-copy
 alias wexe = watchexec -c -q
 alias wgg = wexe -- git-graph --no-pager -S -l -s r
 
+## Bluetooth
+alias bton = sudo rfkill unblock bluetooth
+alias btoff = sudo rfkill block bluetooth
+
+## Util
+alias hist = do {history | get command | to text | fzf --tac}
+
+## Scripts
 alias blender = nu ~/.config/nushell/scripts/blender.nu
 alias shrink = nu ~/.config/nushell/scripts/shrink.nu
 alias eol = nu ~/.config/nushell/scripts/eol.nu
+alias vaper = nu ~/.config/nushell/scripts/vaper.nu
 
