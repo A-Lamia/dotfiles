@@ -1,41 +1,6 @@
-def --wrapped pstart [$exe, ...param] {
-	match $nu.os-info.name { 
-		"Windows_NT" => {
-			pwsh -nop -c  ('Start-Process' 
-				| append $exe 
-				| append ($param 
-				| enumerate 
-				| each {|c| $"'($c.item)',"}) 
-				| str join " "
-	  		| str trim --right --char "," ) 
-		}, 
-		"linux" => {
-			sh -c ($exe
-				| append $param
-				| append "&"
-				| str join " ")
-		},
-		_ => "OS not found" }
-}
-
-def --wrapped shstart [$exe, ...param] {
-	sh -c ($exe
-		| append $param
-		| append "&"
-		| str join)
-}
-
-
 def --wrapped n [...opts] {
   if (which neovide | is-empty) { return "Neovide was not found" }
 	pstart neovide ...$opts
-}
-
-
-def --wrapped vsdevcmd [...command] {
-  let vsdev = '&{Import-Module "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"; Enter-VsDevShell 61980f80 -SkipAutomaticLocation -DevCmdArguments "-arch=x64 -host_arch=x64"}'
-  let command = ($command | str join " ")
-  pwsh -nop -c ($vsdev + "; " + $command)
 }
 
 
@@ -48,3 +13,18 @@ def bgl [] {
 }
 
 
+def cht [...question: string] {
+	let query = "cht.sh/" + ($question | str join "+" )
+	curl --silent $query
+}
+
+
+def --env y [...args] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+	yazi ...$args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -fp $tmp
+}
