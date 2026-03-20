@@ -1,0 +1,69 @@
+[config]
+
+[config.wallpaper]
+command = "hyprpaperctl {{ image }}"
+set = true
+
+[config.custom_colors]
+red = "#FF0000"
+orange = "#ff6000"
+green = "#00FF00"
+blue = "#0000FF"
+cyan = "#00FFFF"
+magenta = "#FF00FF"
+yellow = "#FFFF00"
+inactive = "#888888"
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty.conf'
+output_path = '~/.config/kitty/kitty_ui.conf'
+post_hook = 'bash -c "kill -SIGUSR1 $(pgrep kitty)"'
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland.conf'
+output_path = '~/.config/hypr/theme.conf'
+
+[templates.ignis]
+input_path = '~/.config/matugen/templates/ignis.css'
+output_path = '~/.config/ignis/theme.css'
+
+[templates.wl-kbptr]
+input_path = '~/.config/matugen/templates/wl-kbptr'
+output_path = '~/.config/wl-kbptr/config'
+
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
+[templates.wiremix]
+input_path = '~/.config/matugen/templates/wiremix.toml'
+output_path = '~/.config/wiremix/wiremix.toml'
+
+[templates.mako]
+input_path = '~/.config/matugen/templates/mako'
+output_path = '~/.config/mako/theme'
+post_hook = 'makoctl reload'
+
+[templates.sherlock]
+input_path = '~/.config/matugen/templates/sherlock.css'
+output_path = '~/.config/sherlock/themes/veyr/src/colors.css'
+post_hook = '~/.config/sherlock/themes/veyr/build'
+
+[templates.qutebrowser]
+input_path = '~/.config/matugen/templates/qutebrowser.py'
+output_path = '~/.config/qutebrowser/colors.py'
+post_hook = '~/.config/matugen/scripts/reload_qutebrowser.sh'
+
+[templates.ncspot]
+input_path = '~/.config/matugen/templates/ncspot.toml'
+output_path = '~/.config/ncspot/theme.toml'
+post_hook = '~/.config/matugen/scripts/ncspot'
+
+[templates.govee]
+input_path = '~/.config/matugen/templates/govee'
+output_path = '~/.cache/govee'
+post_hook = '~/.config/matugen/scripts/govee'

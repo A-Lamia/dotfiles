@@ -1,0 +1,14 @@
+#!/usr/bin/env nu
+
+let dir = $env.XDG_CONFIG_HOME
+
+let options = open -r $"($dir)/ncspot/options.toml"
+let theme = open -r $"($dir)/ncspot/theme.toml" 
+
+[$options $theme] | str join "\n" | save -f $"($dir)/ncspot/config.toml"
+
+let socket = "/run/user/1000/ncspot/ncspot.sock"
+
+if ($socket | path exists) {
+  "reload" | socat - UNIX-CONNECT:($socket) | save -f -r /dev/null
+}

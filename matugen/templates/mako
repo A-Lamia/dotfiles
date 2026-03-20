@@ -1,0 +1,12 @@
+background-color={{colors.surface.default.hex}}AA
+text-color={{colors.on_surface.default.hex}}
+border-color={{colors.primary.default.hex}}
+
+[urgency=low]
+border-color={{colors.blue.default.hex}}
+
+[urgency=normal]
+border-color={{colors.primary.default.hex}}
+
+[urgency=high]
+border-color={{colors.red.default.hex}}

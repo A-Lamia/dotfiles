@@ -1,0 +1,40 @@
+[general]
+home_row_keys=
+# modes=tile,bisect
+
+[mode_tile]
+label_color={{colors.on_primary_fixed_variant.default.hex}}EE
+label_select_color={{colors.on_primary_fixed.default.hex}}
+unselectable_bg_color={{colors.surface.default.hex}}50
+selectable_bg_color={{colors.primary.default.hex}}80
+selectable_border_color={{colors.primary_container.default.hex}}
+label_font_family=Maple Mono
+label_symbols=abcdefghijklmnopqrstuvwxyz
+
+[mode_floating]
+source=detect
+label_color={{colors.on_primary_fixed_variant.default.hex}}EE
+label_select_color={{colors.on_primary_fixed.default.hex}}
+unselectable_bg_color={{colors.surface.default.hex}}50
+selectable_bg_color={{colors.primary.default.hex}}EE
+selectable_border_color={{colors.primary_container.default.hex}}
+label_font_family=Maple Mono
+label_symbols=abcdefghijklmnopqrstuvwxyz
+
+[mode_bisect]
+label_color={{colors.on_surface.default.hex}}
+label_font_size=20
+label_font_family=Maple Mono
+label_padding=12
+pointer_size=20
+pointer_color={{colors.error.default.hex}}
+unselectable_bg_color={{colors.surface.default.hex}}80
+even_area_bg_color={{colors.primary.default.hex}}CC
+even_area_border_color={{colors.primary_container.default.hex}}CC
+odd_area_bg_color={{colors.secondary.default.hex}}CC
+odd_area_border_color={{colors.secondary_container.default.hex}}CC
+history_border_color={{colors.source_color.default.hex}}
+
+
+[mode_click]
+# button=left

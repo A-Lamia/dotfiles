@@ -1,0 +1,59 @@
+#!/usr/bin/env nu
+# Matugen's HSL format is incorrect.
+
+def clamp_sat (value) {
+  let value = ($value | into int)
+  if ($value > 65) {65} else if ($value <= 35) {35} else {$value}
+}
+
+def map_hue (value) {
+  let value = ($value | into int)
+  ($value / 255) * 360
+}
+
+let color = ("~/.cache/govee" | open | split row "\n")
+
+let primary = ($color | get 0 | pastel format hsl | parse -r "hsl.(?<h>.*), (?<s>.*)%, (?<l>.*)%.")
+let secondary = ($color | get 1 | pastel format hsl | parse -r "hsl.(?<h>.*), (?<s>.*)%, (?<l>.*)%.")
+
+# $"hsl\(($primary.h.0), ($primary.s.0)%, ($primary.l.0)%\)" | pastel color
+# $"hsl\(($secondary.h.0), ($secondary.s.0)%, ($secondary.l.0)%\)" | pastel color
+
+let hour = (date now | format date "%k" | into int)
+
+if ($hour <= 7) or ($hour >= 17) {
+  govee color ($"hsl\(($primary.h.0), (clamp_sat $primary.s.0)%, 50.0%\)" | pastel format hex| str replace "#" "")
+  govee http seg "[0,1,2,9,10,11]" ($"hsl\(($secondary.h.0), (clamp_sat $secondary.s.0)%, 50.0%\)" 
+    | pastel format hex 
+    | str replace "#" "0x"
+  ) | save -r -f /dev/null
+}
+
+# Using a rotation to get the secondary color
+# let color = ("~/.cache/govee" | open | parse -r "hsl.(?<h>.*), (?<s>.*)%, (?<l>.*)%.")
+# let hour = (date now | format date "%k" | into int)
+#
+# if ($hour <= 7) or ($hour >= 17) {
+#   govee color ($"hsl\(($color.h.0), ($color.s.0)%, 50.0%\)" | pastel format hex| str replace "#" "")
+#   govee http seg "[0,1,2,9,10,11]" ($"hsl\(($color.h.0), ($color.s.0)%, 50.0%\)" 
+#     | pastel rotate -- 90 
+#     | pastel format hex 
+#     | str replace "#" "0x"
+#   ) | save -r -f /dev/null
+# }
+
+# Old Method Wasn't working well for getting good lighting.
+
+# let colors = ("~/.cache/govee" | open | split words)
+# let color = ($colors.0 | pastel saturate 0.1 | pastel format hex)
+# let hour = (date now | format date "%k" | into int)
+#
+#
+# if ($hour <= 7) or ($hour >= 17) {
+#   govee color ($color | str replace "#" "")
+#   govee http seg "[0,1,2,9,10,11]" ($color 
+#     | pastel rotate -- 90 
+#     | pastel format hex 
+#     | str replace "#" "0x"
+#   ) | save -r -f /dev/null
+# }

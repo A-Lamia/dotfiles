@@ -1,0 +1,8 @@
+:root {
+  --background: {{colors.surface.default.hsla | set_alpha: 0.8}};
+  --text: {{colors.on_surface.default.hex}};
+  --cborder: {{colors.primary.default.hex}};
+
+  --active-text: {{colors.on_primary.default.hex}};
+  --active-bg: {{colors.primary.default.hex}};
+}
