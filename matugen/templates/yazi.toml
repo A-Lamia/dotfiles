@@ -1,22 +1,19 @@
-# vim:fileencoding=utf-8:foldmethod=marker
-
-
 [mgr]
-cwd = { fg = "#81c8be" }
+cwd = { fg = "{{colors.tertiary.default.hex}}" }
 
 # Hovered
 hovered         = { reversed = true }
 preview_hovered = { underline = true }
 
 # Find
-find_keyword  = { fg = "#e5c890", bold = true, italic = true, underline = true }
-find_position = { fg = "#f4b8e4", bg = "reset", bold = true, italic = true }
+find_keyword  = { fg = "{{colors.yellow.default.hex}}", bold = true, italic = true, underline = true }
+find_position = { fg = "{{colors.magenta.default.hex}}", bg = "reset", bold = true, italic = true }
 
 # Marker
-marker_copied   = { fg = "#a6d189", bg = "#a6d189" }
-marker_cut      = { fg = "#e78284", bg = "#e78284" }
-marker_marked   = { fg = "#81c8be", bg = "#81c8be" }
-marker_selected = { fg = "#e5c890", bg = "#e5c890" }
+marker_copied   = { fg = "{{colors.green.default.hex}}", bg = "{{colors.green.default.hex}}" }
+marker_cut      = { fg = "{{colors.red.default.hex}}", bg = "{{colors.red.default.hex}}" }
+marker_marked   = { fg = "{{colors.blue.default.hex}}", bg = "{{colors.blue.default.hex}}" }
+marker_selected = { fg = "{{colors.yellow.default.hex}}", bg = "{{colors.yellow.default.hex}}" }
 
 # Tab
 tab_active   = { reversed = true }
@@ -24,18 +21,18 @@ tab_inactive = {}
 tab_width    = 1
 
 # Count
-count_copied   = { fg = "#303446", bg = "#a6d189" }
-count_cut      = { fg = "#303446", bg = "#e78284" }
-count_selected = { fg = "#303446", bg = "#e5c890" }
+count_copied   = { fg = "#2E3446", bg = "{{colors.green.default.hex}}" }
+count_cut      = { fg = "#2E3446", bg = "{{colors.yellow.default.hex}}" }
+count_selected = { fg = "#2E3446", bg = "{{colors.red.default.hex}}" }
 
 # Border
 border_symbol = "│"
-border_style  = { fg = "{{colors.surface_container.default.hex}}" }
+border_style  = { fg = "{{colors.primary.default.hex}}" }
 
 
 [tabs]
 active   = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}", bold = true }
-inactive = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}" }
+inactive = { fg = "{{colors.primary.default.hex}}", bg = "{{colors.on_primary.default.hex}}" }
 
 
 [mode]
@@ -43,23 +40,19 @@ normal_main = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary
 normal_alt  = { fg = "{{colors.on_primary_container.default.hex}}", bg = "{{colors.primary_container.default.hex}}" }
 
 # Select mode
-# select_main = { fg = "#303446", bg = "#8888fe", bold = true }
 select_main = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}", bold = true }
 select_alt  = { fg = "{{colors.on_secondary_container.default.hex}}", bg = "{{colors.secondary_container.default.hex}}" }
-# select_main = { fg = "{{colors.on_magenta.default.hex}}", bg = "{{colors.magenta.default.hex}}", bold = true }
-# select_alt  = { fg = "{{colors.magenta.default.hex}}", bg = "{{colors.on_magenta.default.hex}}" }
 
-# unset_main = { fg = "#303446", bg = "#fe8888", bold = true }
 unset_main = { fg = "{{colors.on_tertiary.default.hex}}", bg = "{{colors.tertiary.default.hex}}", bold = true }
 unset_alt  = { fg = "{{colors.on_tertiary_container.default.hex}}", bg = "{{colors.tertiary_container.default.hex}}" }
 
 
 [status]
-perm_sep   = { fg = "#838ba7" }
-perm_type  = { fg = "{{colors.primary.default.hex}}" } # NOTE: this is supposed to be blue fix this later when adding colors
-perm_read  = { fg = "#e5c890" }
-perm_write = { fg = "#e78284" }
-perm_exec  = { fg = "#a6d189" }
+perm_sep   = { fg = "{{colors.outline.default.hex}}" }
+perm_type  = { fg = "{{colors.blue.default.hex}}" }
+perm_read  = { fg = "{{colors.red.default.hex}}" }
+perm_write = { fg = "{{colors.yellow.default.hex}}" }
+perm_exec  = { fg = "{{colors.green.default.hex}}" }
 
 progress_label  = { fg = "#ffffff", bold = true }
 progress_normal = { fg = "{{colors.primary.default.hex}}", bg = "{{colors.on_primary.default.hex}}" }
@@ -99,35 +92,93 @@ separator_style = { fg = "#626880" }
 
 
 [help]
-on      = { fg = "#81c8be" }
-run     = { fg = "#f4b8e4" }
+on      = { fg = "{{colors.cyan.default.hex}}" }
+run     = { fg = "{{colors.magenta.default.hex}}" }
 hovered = { reversed = true, bold = true }
 footer  = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}" }
 
 
 [notify]
-title_info  = { fg = "#a6d189" }
-title_warn  = { fg = "#e5c890" }
-title_error = { fg = "#e78284" }
+title_info  = { fg = "{{colors.green.default.hex}}" }
+title_warn  = { fg = "{{colors.yellow.default.hex}}" }
+title_error = { fg = "{{colors.red.default.hex}}" }
 
+[confirm]  
+border     = { fg = "{{colors.tertiary.default.hex}}", bold = true }  
+title      = { fg = "{{colors.tertiary.default.hex}}", bold = true }  
+body       = { fg = "{{colors.on_background.default.hex}}" }  
+list       = { fg = "{{colors.on_background.default.hex}}" }  
+btn_yes    = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}", bold = true }  
+btn_no     = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}" }  
+btn_labels = [ "  [Y]es  ", "  (N)o   " ]
 
 [filetype]
-
 rules = [
+	# Executable
+	# { url = "*", is = "exec", fg = "{{colors.red.default.hex}}" },
 	# Images
-	{ mime = "image/*", fg = "#81c8be" },
-
-	# Media
-	{ mime = "{audio,video}/*", fg = "#e5c890" },
-
+	# { mime = "image/*", fg = "{{colors.cyan.default.hex}}" },
 	# Archives
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f4b8e4" },
-
+	# { mime = "application/{zip,rar,7z*,tar,gz,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "{{colors.blue.default.hex}}" },
 	# Documents
-	{ mime = "application/{pdf,doc,rtf}", fg = "#a6d189" },
-
+	# { mime = "application/{pdf,doc,rtf,epub}", fg = "{{colors.green.default.hex}}" },
+	# Media
+	# { mime = "{audio,video}/*", fg = "{{colors.yellow.default.hex}}" },
 	# Fallback
-	{ name = "*", fg = "{{colors.secondary.default.hex}}" },
-	{ name = "*/", fg = "{{colors.primary.default.hex}}" }
+	{ url = "*", fg = "{{colors.on_background.default.hex}}" },
+	{ url = "*/", fg = "{{colors.primary.default.hex}}" },
 ]
 
+[icon]
+dirs = [
+	{ name = ".config", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = ".git", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = ".jj", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = ".github", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = ".npm", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Desktop", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Development", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Documents", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Downloads", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Library", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Movies", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Music", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Pictures", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Public", text = "", fg = "{{colors.tertiary.default.hex}}" },
+	{ name = "Videos", text = "", fg = "{{colors.tertiary.default.hex}}" },
+]
+
+exts = [  
+    { name = "jpg", text = "", fg = "{{colors.yellow.default.hex}}" },  
+    { name = "png", text = "", fg = "{{colors.yellow.default.hex}}" },  
+    { name = "gif", text = "", fg = "{{colors.yellow.default.hex}}" },  
+    { name = "exr", text = "", fg = "{{colors.yellow.default.hex}}" },  
+    { name = "tif", text = "", fg = "{{colors.yellow.default.hex}}" },  
+      
+    { name = "zip", text = "", fg = "{{colors.blue.default.hex}}" },  
+    { name = "7z", text = "", fg = "{{colors.blue.default.hex}}" },  
+    { name = "tar", text = "", fg = "{{colors.blue.default.hex}}" },
+    { name = "gz", text = "", fg = "{{colors.blue.default.hex}}" }, 
+
+    { name = "pdf", text = "", fg = "{{colors.green.default.hex}}" }, 
+    { name = "epub", text = "", fg = "{{colors.green.default.hex}}" }, 
+    { name = "md", text = "", fg = "{{colors.green.default.hex}}" }, 
+]
+
+conds = [
+	# Special files
+	{ if = "orphan", text = "", fg = "#c6d0f5" },
+	{ if = "link", text = "", fg = "#838ba7" },
+	{ if = "block", text = "", fg = "#eebebe" },
+	{ if = "char", text = "", fg = "#eebebe" },
+	{ if = "fifo", text = "", fg = "#eebebe" },
+	{ if = "sock", text = "", fg = "#eebebe" },
+	{ if = "sticky", text = "", fg = "#eebebe" },
+	{ if = "dummy", text = "", fg = "#e78284" },
+
+	# Fallback
+	{ if = "dir & hovered", text = "", fg = "#8caaee" },
+	{ if = "dir", text = "", fg = "{{colors.primary.default.hex}}" },
+	{ if = "exec", text = "", fg = "{{colors.red.default.hex}}" },
+	{ if = "!dir", text = "", fg = "{{colors.secondary.default.hex}}" },
+]
