@@ -179,6 +179,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window", silent =
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window", silent = false })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window", silent = false })
 
+-- Swap mark bindings
+vim.keymap.set("n", "'", "`", {})
+vim.keymap.set("n", "`", "'", {})
+
 vim.keymap.set({ "n", "v" }, "s", "", { desc = "Text mods" })
 
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
