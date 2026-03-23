@@ -19,7 +19,7 @@ class colors:
     on_primary_shade = (
         "{{colors.on_primary.default.rgba | auto_lightness: 15.0 | set_alpha: 255}}"
     )
-    on_primary_container_shade = "{{colors.on_primary_container.default.rgb | auto_lightness: 15.0 | set_alpha: 255}}"
+    on_primary_container_shade = "{{colors.on_primary_container.default.rgba | auto_lightness: 15.0 | set_alpha: 255}}"
 
     compliment = "{{colors.primary.default.rgb | set_hue: -180.0}}"
     on_compliment = "{{colors.on_primary.default.rgb | set_hue: -180.0}}"
