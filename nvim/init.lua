@@ -193,13 +193,16 @@ vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = vim.g.border })
 -- #PLUGINS
 ---------------------------------------
 -- Pack Autocmd, run scripts for plugins and other pack functions
--- vim.api.nvim_create_autocmd("PackChanged", {
--- 	callback = function(ev)
--- 		local name, kind = ev.data.spec.name, ev.data.kind
--- 		if kind == "install" or kind == "update" then
--- 		end
--- 	end
--- })
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if kind == "update" then
+			if name == "nvim-treesitter" then
+				vim.cmd(":TSUpdate")
+			end
+		end
+	end
+})
 
 -- Plugin host platforms
 local GH = "https://github.com/"
