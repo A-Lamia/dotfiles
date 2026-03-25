@@ -109,6 +109,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function()
+		vim.opt_local.winbar = ""
+		vim.opt_local.relativenumber = false
+		vim.opt_local.number = false
+		vim.opt_local.statuscolumn = ""
+		vim.cmd("startinsert")
+	end
+})
+
 vim.on_key(function(char)
 	if vim.fn.mode() == "n" then
 		local key = vim.fn.keytrans(char)
