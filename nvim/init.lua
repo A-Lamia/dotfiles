@@ -128,6 +128,17 @@ vim.on_key(function(char)
 end, vim.api.nvim_create_namespace("auto_hlsearch"))
 
 ---------------------------------------
+-- #COMMANDS
+---------------------------------------
+vim.api.nvim_create_user_command("VTerm", function()
+	vim.cmd("vsplit | terminal")
+end, {})
+
+vim.api.nvim_create_user_command("HTerm", function()
+	vim.cmd("split | terminal")
+end, {})
+
+---------------------------------------
 -- #FUNCTION / #MACROS
 ---------------------------------------
 local function better_search(key)
