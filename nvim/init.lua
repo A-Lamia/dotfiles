@@ -178,6 +178,17 @@ local function close_buf_or_win()
 end
 
 ---------------------------------------
+-- #COMMANDS
+---------------------------------------
+vim.api.nvim_create_user_command("VTerm", function()
+	vim.cmd("vsplit | terminal")
+end, {})
+
+vim.api.nvim_create_user_command("HTerm", function()
+	vim.cmd("split | terminal")
+end, {})
+
+---------------------------------------
 -- #KEYMAPS
 ---------------------------------------
 vim.keymap.set("n", "<leader>q", function() vim.cmd("quit") end, { desc = "Quit Neovim" })
