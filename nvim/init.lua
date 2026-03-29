@@ -177,6 +177,22 @@ local function close_buf_or_win()
 	end
 end
 
+local function resize_horizontal(amount)
+	local win = vim.api.nvim_get_current_win()
+	local win_pos = vim.api.nvim_win_get_position(win)
+	local win_width = vim.api.nvim_win_get_width(win)
+	local total_width = vim.o.columns
+
+	-- If the window's right edge reaches the total width, it's on the right side
+	local is_right_side = (win_pos[2] + win_width) >= (total_width - 1)
+
+	if is_right_side then
+		amount = -amount
+	end
+
+	vim.cmd('vertical resize ' .. (win_width + amount))
+end
+
 ---------------------------------------
 -- #COMMANDS
 ---------------------------------------
@@ -210,6 +226,11 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window", silent = 
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window", silent = false })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window", silent = false })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window", silent = false })
+
+vim.keymap.set('n', '<A-Up>', '<cmd>resize +2<CR>')
+vim.keymap.set('n', '<A-Down>', '<cmd>resize -2<CR>')
+vim.keymap.set('n', '<A-Left>', function() resize_horizontal(-2) end)
+vim.keymap.set('n', '<A-Right>', function() resize_horizontal(2) end)
 
 -- Swap mark bindings
 vim.keymap.set("n", "'", "`", {})
