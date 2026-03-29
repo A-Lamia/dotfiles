@@ -643,7 +643,6 @@ if astrotheme_ok then
 					hl.FloatTitle.blend = vim.o.winblend
 
 					hl.PmenuSel = { fg = c.ui.base, bg = c.ui.accent, bold = true, blend = 0 }
-					return hl
 				end,
 			},
 		},
