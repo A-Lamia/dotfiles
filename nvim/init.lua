@@ -152,15 +152,6 @@ local function better_search(key)
 	end
 end
 
-local function toggle_fold()
-	local lnum = vim.api.nvim_win_get_cursor(0)
-	if vim.fn.foldclosed(lnum[1]) ~= -1 then
-		pcall(vim.cmd, "foldopen")
-	else
-		pcall(vim.cmd, "foldclose")
-	end
-end
-
 local function close_buf_or_win()
 	local current_buffer = vim.api.nvim_win_get_buf(0)
 	local current_window = vim.fn.win_getid()
@@ -212,7 +203,6 @@ vim.keymap.set("n", "<leader>c", function() close_buf_or_win() end, { desc = "Cl
 vim.keymap.set("n", "<leader>w", function() vim.cmd("write") end, { desc = "Save buffer" })
 vim.keymap.set("n", "<leader>r", function() vim.cmd("write | restart") end, { desc = "Restart Neovim" })
 vim.keymap.set("n", "<leader>t", ":terminal<cr>", { desc = "Open terminal" })
-vim.keymap.set("n", "<leader>f", function() toggle_fold() end, { desc = "Toggle fold" })
 vim.keymap.set({ "n", "v" }, "g.", ":s/\\(\\S\\)\\zs\\(\\s\\+\\)/ /g<cr>",
 	{ desc = "Remove extra spaces from line" })
 
