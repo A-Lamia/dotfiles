@@ -285,6 +285,7 @@ vim.pack.add({
 	GH .. "eero-lehtinen/oklch-color-picker.nvim",
 
 })
+	GH .. "MeanderingProgrammer/render-markdown.nvim",
 
 -- plugins stored in this section are to be used for lazy loading
 -- or manually started with :packadd
@@ -614,6 +615,25 @@ if minifiles_ok then
 			minifiles.open(dir)
 		end
 	end, { desc = "Open explorer in buffer directory" })
+end
+
+---------------------------------------
+-- @RENDER-MARKDOWN
+---------------------------------------
+local rm_ok, rm = pcall(require, "render-markdown")
+if rm_ok then
+	rm.setup({
+		signs = {
+			enabled = false,
+		},
+		code = {
+			width = "block",
+		},
+		heading = {
+			width = "block",
+			right_pad = 0.94
+		},
+	})
 end
 
 ---------------------------------------
