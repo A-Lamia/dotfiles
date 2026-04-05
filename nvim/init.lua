@@ -71,7 +71,7 @@ end)
 vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
-	jump = { float = true },
+	jump = { on_jump = vim.diagnostic.open_float },
 	float = { border = "rounded", source = "if_many" },
 	underline = { severity = vim.diagnostic.severity.ERROR },
 	virtual_text = false,
