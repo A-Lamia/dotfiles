@@ -368,8 +368,15 @@ end
 ---------------------------------------
 local treesj_ok, treesj = pcall(require, "treesj")
 if treesitter_ok and treesj_ok then
-	treesj.setup({})
-	vim.keymap.set("n", "sj", treesj.toggle, { desc = "Split / Join blocks" })
+	treesj.setup({
+		use_default_keymaps = false,
+		max_join_length = 200
+	})
+	vim.keymap.set("n", "sj", treesj.toggle, { desc = "Toggle code block" })
+	vim.keymap.set("n", "sJ", function()
+			treesj.toggle({ split = { recursive = true } })
+		end,
+		{ desc = "Join code block recursive" })
 end
 
 ---------------------------------------
