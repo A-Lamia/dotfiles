@@ -47,6 +47,7 @@ vim.o.expandtab      = true
 
 -- Statusline
 vim.o.laststatus     = 0
+vim.o.statusline     = "%{repeat('─', &columns)}"
 vim.o.cmdheight      = 0
 
 -- Statuscolumn
@@ -734,6 +735,8 @@ if astrotheme_ok then
 					hl.NormalFloat.blend = vim.o.winblend
 					hl.FloatBorder.blend = vim.o.winblend
 					hl.FloatTitle.blend = vim.o.winblend
+					hl.StatusLine = { link = "WinSeparator" }
+					hl.StatusLineNC = { link = "WinSeparator" }
 
 					hl.PmenuSel = { fg = c.ui.base, bg = c.ui.accent, bold = true, blend = 0 }
 				end,
