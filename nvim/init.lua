@@ -285,6 +285,8 @@ vim.pack.add({
 	GH .. "eero-lehtinen/oklch-color-picker.nvim",
 
 })
+	GH .. "lewis6991/gitsigns.nvim",
+
 	GH .. "MeanderingProgrammer/render-markdown.nvim",
 
 -- plugins stored in this section are to be used for lazy loading
@@ -615,6 +617,25 @@ if minifiles_ok then
 			minifiles.open(dir)
 		end
 	end, { desc = "Open explorer in buffer directory" })
+end
+
+---------------------------------------
+-- @GITSIGNS
+---------------------------------------
+local gitsigns_ok, gitsigns = pcall(require, "gitsigns")
+if gitsigns_ok then
+	gitsigns.setup({})
+
+	vim.keymap.set("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Stage hunk" })
+	vim.keymap.set("v", "<leader>gs", ":'<,'>Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
+	vim.keymap.set("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Reset hunk" })
+	vim.keymap.set("n", "<leader>gS", gitsigns.stage_buffer, { desc = "Stage buffer" })
+	vim.keymap.set("n", "<leader>gp", gitsigns.preview_hunk_inline, { desc = "Preview hunk" })
+	vim.keymap.set("n", "<leader>gP", gitsigns.preview_hunk, { desc = "Preview hunk" })
+	vim.keymap.set("n", "<leader>gb", gitsigns.blame_line, { desc = "Blame line" })
+	vim.keymap.set("n", "<leader>gB", function() gitsigns.blame_line({ full = true }) end, { desc = "Blame line (full)" })
+	vim.keymap.set("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff this" })
+	vim.keymap.set("n", "<leader>gD", function() gitsigns.diffthis("~") end, { desc = "Diff this ~" })
 end
 
 ---------------------------------------
