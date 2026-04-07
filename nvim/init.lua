@@ -251,7 +251,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 local GH = "https://github.com/"
 
 -- Default plugin list.
-vim.pack.add({
+spec = {
 	GH .. "nvim-treesitter/nvim-treesitter",
 	GH .. "Wansmer/treesj",
 	GH .. "Wansmer/sibling-swap.nvim",
@@ -285,9 +285,13 @@ vim.pack.add({
 	GH .. "eero-lehtinen/oklch-color-picker.nvim",
 
 })
+
 	GH .. "lewis6991/gitsigns.nvim",
 
 	GH .. "MeanderingProgrammer/render-markdown.nvim",
+
+}
+vim.pack.add(spec)
 
 -- plugins stored in this section are to be used for lazy loading
 -- or manually started with :packadd
