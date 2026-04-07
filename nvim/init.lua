@@ -284,7 +284,7 @@ spec = {
 
 	GH .. "eero-lehtinen/oklch-color-picker.nvim",
 
-})
+	GH .. "stevearc/quicker.nvim",
 
 	GH .. "lewis6991/gitsigns.nvim",
 
@@ -668,6 +668,31 @@ local oklch_ok, oklch = pcall(require, "oklch-color-picker")
 if oklch_ok then
 	oklch.setup({})
 	vim.keymap.set("n", "<C-C>", ":ColorPickOklch<CR>", { desc = "Move to left window" })
+end
+
+---------------------------------------
+-- @QUICKER
+---------------------------------------
+local quicker_ok, quicker = pcall(require, "quicker")
+if quicker_ok then
+	quicker.setup({
+		keys = {
+			{
+				">",
+				function()
+					quicker.expand({ before = 4, after = 4, add_to_existing = true })
+				end,
+				desc = "Expand quickfix context",
+			},
+			{
+				"<",
+				function()
+					quicker.collapse()
+				end,
+				desc = "Collapse quickfix context",
+			},
+		},
+	})
 end
 
 ---------------------------------------
