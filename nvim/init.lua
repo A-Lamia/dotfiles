@@ -575,6 +575,7 @@ if snacks_ok then
 	snacks.setup({
 		picker = { enabled = true },
 		terminal = { enabled = true },
+		notifier = { enabled = true },
 	})
 	-- vim.keymap.set("n", "<C-p>", function() snacks.picker.files({}) end, { desc = "File picker" })
 	vim.keymap.set("n", "<C-f>", function() snacks.picker.grep({}) end, { desc = "Search Words" })
