@@ -95,8 +95,7 @@ vim.diagnostic.config({
 ---------------------------------------
 -- #CONST
 ---------------------------------------
-local DATA = vim.fn.stdpath("data")
-local PLUGIN_DATA = DATA .. "/site/pack/core/opt"
+local spec = {}
 
 ---------------------------------------
 -- #AUTOCMD / #ON_KEY
