@@ -581,6 +581,10 @@ if snacks_ok then
 	vim.keymap.set("n", "<leader>g", "", { desc = "Git", })
 	vim.keymap.set("n", "<leader>gg", function() snacks.terminal.toggle("lazygit", {}) end,
 		{ desc = "Open Lazy Git", remap = true })
+
+	vim.api.nvim_create_user_command("Picker", function()
+		snacks.picker()
+	end, {})
 end
 
 ---------------------------------------
