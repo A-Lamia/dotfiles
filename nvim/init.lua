@@ -539,9 +539,7 @@ end
 ---------------------------------------
 local bento_ok, bento = pcall(require, "bento")
 if bento_ok then
-	bento.setup({
-		-- main_keymap = "<tab>",
-	})
+	bento.setup({})
 end
 
 ---------------------------------------
