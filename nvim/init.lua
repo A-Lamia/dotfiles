@@ -575,11 +575,18 @@ if snacks_ok then
 		terminal = { enabled = true },
 		notifier = { enabled = true },
 	})
-	-- vim.keymap.set("n", "<C-p>", function() snacks.picker.files({}) end, { desc = "File picker" })
-	vim.keymap.set("n", "<C-f>", function() snacks.picker.grep({}) end, { desc = "Search Words" })
+	vim.keymap.set("n", "<C-p>", function() snacks.picker.files({}) end, { desc = "File picker" })
+	vim.keymap.set("n", "<C-f>", function() snacks.picker.files({}) end, { desc = "File picker" })
+	vim.keymap.set("n", "<A-f>", function() snacks.picker.grep_buffers({}) end, { desc = "Search Words in Buffers" })
+	vim.keymap.set("n", "<leader>f", "", { desc = "Find" })
+	vim.keymap.set("n", "<leader>ff", function() snacks.picker.files({}) end, { desc = "File picker" })
+	vim.keymap.set("n", "<leader>fw", function() snacks.picker.grep({}) end, { desc = "Search Words" })
+	vim.keymap.set("n", "<leader>fe", function() snacks.picker.grep_buffers({}) end, { desc = "Search Words in Buffers" })
 	vim.keymap.set("n", "<leader>g", "", { desc = "Git", })
-	vim.keymap.set("n", "<leader>gg", function() snacks.terminal.toggle("lazygit", {}) end,
-		{ desc = "Open Lazy Git", remap = true })
+	vim.keymap.set("n", "<leader>gg", function() snacks.terminal.toggle("gitu", {}) end,
+		{ desc = "Open GitU", remap = true })
+	vim.keymap.set("n", "<leader>gc", function() snacks.terminal.toggle("gitu -k cc", {}) end,
+		{ desc = "Open GitU", remap = true })
 
 	vim.api.nvim_create_user_command("Picker", function()
 		snacks.picker()
@@ -597,6 +604,11 @@ if neuralopen_ok then
 
 	if snacks_ok then
 		vim.keymap.set("n", "<C-p>", function()
+			neuralopen.open({
+				cwd = vim.fn.getcwd(),
+			})
+		end, { desc = "File picker", remap = true })
+		vim.keymap.set("n", "<leader>ff", function()
 			neuralopen.open({
 				cwd = vim.fn.getcwd(),
 			})
